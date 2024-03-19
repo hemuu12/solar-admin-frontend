@@ -92,6 +92,12 @@ const Menuitems: MenuitemsType[] = [
     icon: IconShoppingCart,
     href: "/dashboards/factory",
   },
+  {
+    id: uniqueId(),
+    title: "User",
+    icon: IconUserPlus,
+    href: "/dashboards/user",
+  },
  
 ];
 

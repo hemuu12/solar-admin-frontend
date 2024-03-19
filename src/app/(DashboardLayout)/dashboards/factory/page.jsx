@@ -36,9 +36,11 @@ const FactoryTable = () => {
   }, []);
 
   const fetchItems = async () => {
-    try {
+    try { 
+      setIsLoading(true)
       const response = await axios.get('https://polycab-backend.vercel.app/data/');
       setItems(response.data);
+      setIsLoading(false)
     } catch (error) {
       console.error('Error fetching items:', error);
     }
@@ -145,7 +147,7 @@ const FactoryTable = () => {
   return (
     <div className="container mx-auto p-4">
       <TableContainer>
-        <Table>
+          <Table>
           <TableHead>
             <TableRow>
               <TableCell>Featured Image</TableCell>
@@ -178,8 +180,12 @@ const FactoryTable = () => {
             ))}
           </TableBody>
         </Table>
+        {isLoading && (
+          <div style={{ display: 'flex', justifyContent:"center" ,marginTop: '10px' , scroll:'none' }}>
+            <CircularProgress size={30} />
+          </div>
+        )}
       </TableContainer>
-
       <Button
         variant="contained"
         color="primary"
