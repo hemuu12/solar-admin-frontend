@@ -18,7 +18,7 @@ import "react-quill/dist/quill.snow.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export const MyApp = ({ children }: { children: React.ReactNode }) => {
+export const App = ({ children }: { children: React.ReactNode }) => {
   const theme = ThemeSettings();
 
   const customizer = useSelector((state: AppState) => state.customizer);
@@ -53,7 +53,7 @@ export default function RootLayout({
         <Provider store={store}>
           {loading ? (
             // eslint-disable-next-line react/no-children-prop
-            <MyApp children={children} />
+            <App children={children} />
           ) : (
             <Box
               sx={{
