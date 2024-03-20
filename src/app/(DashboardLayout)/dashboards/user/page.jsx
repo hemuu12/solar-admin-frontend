@@ -25,7 +25,7 @@ const User = () => {
   const fetchItems = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get('http://localhost:4000/user/all/');
+      const response = await axios.get('https://polycab-backend.vercel.app/user/all/');
       setItems(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -37,7 +37,7 @@ const User = () => {
   const fetchFactories = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get('http://localhost:4000/data/');
+      const response = await axios.get('https://polycab-backend.vercel.app/data/');
       setFactories(response.data);
       setIsLoading(false);
     } catch (error) {
