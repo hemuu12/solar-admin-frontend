@@ -34,7 +34,7 @@ export default function Dashboard() {
           </Grid>
           {/* column */}
           <Grid item xs={12} lg={8}>
-            <RevenueUpdates isLoading={isLoading} />
+            {/* <RevenueUpdates isLoading={isLoading} /> */}
           </Grid>
           {/* column */}
           <Grid item xs={12} lg={4}>

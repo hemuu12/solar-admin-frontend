@@ -74,28 +74,28 @@ const EmployeeSalary = ({ isLoading }: EmployeeSalaryCardProps) => {
   ];
 
   return (
-    <>
-      {
-        isLoading ? (
-          <SkeletonEmployeeSalaryCard />
-        ) : (
-          <DashboardWidgetCard
-            title="Employee Salary"
-            subtitle="Every month"
-            dataLabel1="Salary"
-            dataItem1="$36,358"
-            dataLabel2="Profit"
-            dataItem2="$5,296"
-          >
-            <>
-              <Box height="295px">
-                <Chart options={optionscolumnchart} series={seriescolumnchart} type="bar" height={280} width={"100%"} />
-              </Box>
-            </>
-          </DashboardWidgetCard>
-        )}
-    </>
-
+    // <>
+    //   {
+    //     isLoading ? (
+    //       <SkeletonEmployeeSalaryCard />
+    //     ) : (
+    //       <DashboardWidgetCard
+    //         title="Employee Salary"
+    //         subtitle="Every month"
+    //         dataLabel1="Salary"
+    //         dataItem1="$36,358"
+    //         dataLabel2="Profit"
+    //         dataItem2="$5,296"
+    //       >
+    //         <>
+    //           <Box height="295px">
+    //             <Chart options={optionscolumnchart} series={seriescolumnchart} type="bar" height={280} width={"100%"} />
+    //           </Box>
+    //         </>
+    //       </DashboardWidgetCard>
+    //     )}
+    // </>
+<></>
   );
 };
 

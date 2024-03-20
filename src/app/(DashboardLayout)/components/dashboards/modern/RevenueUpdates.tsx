@@ -101,8 +101,8 @@ const RevenueUpdates = ({ isLoading }: RevenueupdatestwoCardProps) => {
           <SkeletonRevenueUpdatesTwoCard />
         ) : (
           <DashboardCard
-            title="Revenue Updates"
-            subtitle="Overview of Profit"
+            title="Factories"
+            subtitle="Overview of Factories"
             action={
               <CustomSelect
                 labelId="month-dd"
@@ -148,28 +148,28 @@ const RevenueUpdates = ({ isLoading }: RevenueupdatestwoCardProps) => {
                     </Box>
                     <Box>
                       <Typography variant="h3" fontWeight="700">
-                        $63,489.50
+                        7
                       </Typography>
                       <Typography variant="subtitle2" color="textSecondary">
-                        Total Earnings
+                        Factories
                       </Typography>
                     </Box>
                   </Stack>
                 </Stack>
-                <Stack spacing={3} my={5}>
+                {/* <Stack spacing={3} my={5}>
                   <Stack direction="row" spacing={2}>
                     <Avatar
                       sx={{ width: 9, mt: 1, height: 9, bgcolor: primary, svg: { display: 'none' } }}
                     ></Avatar>
-                    <Box>
+                    {/* <Box>
                       <Typography variant="subtitle1" color="textSecondary">
                         Earnings this month
                       </Typography>
                       <Typography variant="h5">$48,820</Typography>
-                    </Box>
-                  </Stack>
-                  <Stack direction="row" spacing={2}>
-                    <Avatar
+                    </Box> */}
+                  {/* </Stack> */}
+                  {/* <Stack direction="row" spacing={2}> */}
+                    {/* <Avatar
                       sx={{ width: 9, mt: 1, height: 9, bgcolor: secondary, svg: { display: 'none' } }}
                     ></Avatar>
                     <Box>
@@ -177,11 +177,12 @@ const RevenueUpdates = ({ isLoading }: RevenueupdatestwoCardProps) => {
                         Expense this month
                       </Typography>
                       <Typography variant="h5">$26,498</Typography>
-                    </Box>
-                  </Stack>
-                </Stack>
-                <Button color="primary" variant="contained" fullWidth>
-                  View Full Report
+                    </Box> */}
+                  {/* </Stack> */}
+                {/* </Stack> */}
+                <Button style={{marginTop:"10px"}}
+                color="primary" variant="contained" fullWidth>
+                  View Full Details
                 </Button>
               </Grid>
             </Grid>

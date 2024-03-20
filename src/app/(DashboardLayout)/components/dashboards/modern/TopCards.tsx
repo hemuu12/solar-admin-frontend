@@ -11,39 +11,15 @@ import icon6 from "public/images/svgs/icon-speech-bubble.svg";
 const topcards = [
   {
     icon: icon2,
-    title: "Employees",
-    digits: "96",
+    title: "Users",
+    digits: "5",
     bgcolor: "primary",
   },
   {
     icon: icon3,
-    title: "Clients",
-    digits: "3,650",
+    title: "Factories",
+    digits: "7",
     bgcolor: "warning",
-  },
-  {
-    icon: icon4,
-    title: "Projects",
-    digits: "356",
-    bgcolor: "secondary",
-  },
-  {
-    icon: icon5,
-    title: "Events",
-    digits: "696",
-    bgcolor: "error",
-  },
-  {
-    icon: icon6,
-    title: "Payroll",
-    digits: "$96k",
-    bgcolor: "success",
-  },
-  {
-    icon: icon1,
-    title: "Reports",
-    digits: "59",
-    bgcolor: "info",
   },
 ];
 

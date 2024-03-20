@@ -14,8 +14,10 @@ const FactoryTable = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [newItem, setNewItem] = useState({
     uniqueId: "",
+    name:"",
     location: '' ,
     shortVideo: '' ,
+    address:"",
     featuredImage: null,
     tourLink: '',
     description: '',
@@ -36,7 +38,7 @@ const FactoryTable = () => {
   }, []);
 
   const fetchItems = async () => {
-    try { 
+    try {
       setIsLoading(true)
       const response = await axios.get('https://polycab-backend.vercel.app/data/');
       setItems(response.data);
@@ -54,6 +56,8 @@ const FactoryTable = () => {
     setNewItem({
       uniqueId: item.uniqueId,
       location: location,
+      name:item.name,
+      address:item.address,
       shortVideo: item.shortVideo,
       featuredImage: "",
       tourLink: item.tourLink,
@@ -106,6 +110,8 @@ const FactoryTable = () => {
       setSelectedItem(null);
       setNewItem({
         uniqueId: "",
+        name:"",
+        address:"",
         location: '',
         shortVideo: '',
         featuredImage: null,
@@ -126,6 +132,8 @@ const FactoryTable = () => {
     setSelectedItem(null);
     setNewItem({
       uniqueId: "",
+      name:"",
+      address:"",
       location: '',
       shortVideo: '',
       featuredImage: null,
@@ -152,6 +160,7 @@ const FactoryTable = () => {
             <TableRow>
               <TableCell>Featured Image</TableCell>
               <TableCell>Unique Id</TableCell>
+              <TableCell>Name</TableCell>
               <TableCell>Description</TableCell>
               <TableCell>Actions</TableCell>
             </TableRow>
@@ -164,9 +173,10 @@ const FactoryTable = () => {
                   <img src={convertBufferToImage(item.featuredImage)} alt="Featured Image" width={50} height={50}/>
                 ) : (
                   'N/A'
-                )}
+                )}  
                 </TableCell>
                 <TableCell>{item.uniqueId}</TableCell>
+                <TableCell>{item.name}</TableCell>
                 <TableCell title={item.description}>{trimString(item.description)}</TableCell>
                 <TableCell>
                   <Button onClick={() => handleEdit(item)}>
@@ -192,6 +202,8 @@ const FactoryTable = () => {
         onClick={() => {
           setNewItem({
             uniqueId: "",
+            name:"",
+            address:"",
             location: '',
             shortVideo: '',
             featuredImage: null,
@@ -234,6 +246,13 @@ const FactoryTable = () => {
             }
           />
           <TextField
+            label="Name"
+            value={newItem.name}
+            onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
             label="Short Video"
             value={newItem.shortVideo}
             onChange={(e) => setNewItem({ ...newItem, shortVideo: e.target.value })}
@@ -254,6 +273,13 @@ const FactoryTable = () => {
             fullWidth
             margin="normal"
           />
+          <TextField
+          label="Address"
+          value={newItem.address}
+          onChange={(e) => setNewItem({ ...newItem, address: e.target.value })}
+          fullWidth
+          margin="normal"
+        />
             <div>
               <InputLabel style={{fontSize:"13px",marginLeft:"5px", marginTop:"5px" ,marginBottom:"7px"}} htmlFor="featuredImage-input">Featured Image</InputLabel>
               <div style={{marginLeft:"5px"}}>
