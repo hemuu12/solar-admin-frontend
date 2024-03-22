@@ -104,7 +104,7 @@ const FactoryTable = () => {
           },
         });
       }
-  
+
       fetchItems();
       setIsEditPopupOpen(false);
       setSelectedItem(null);
@@ -124,7 +124,7 @@ const FactoryTable = () => {
       setIsLoading(false); // Reset loading state to false
     }
   };
-  
+
 
   const handleCancel = () => {
     console.log(isEditPopupOpen)

@@ -3,7 +3,24 @@
 import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import axios from 'axios';
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Dialog, DialogTitle, DialogContent, DialogActions, CircularProgress, Checkbox, FormControlLabel, FormControl } from '@mui/material';
+import {
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TextField,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  CircularProgress,
+  Checkbox,
+  FormControlLabel,
+  FormControl,
+} from '@mui/material';
 
 const User = () => {
   const [items, setItems] = useState([]);
@@ -11,9 +28,9 @@ const User = () => {
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [newItem, setNewItem] = useState({
-    name: "",
-    email: "",
-    factories: {} // State to track selected factories for each user
+    name: '',
+    email: '',
+    factories: {},
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,9 +44,9 @@ const User = () => {
       setIsLoading(true);
       const response = await axios.get('https://polycab-backend.vercel.app/user/all/');
       setItems(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.error('Error fetching items:', error);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -39,20 +56,18 @@ const User = () => {
       setIsLoading(true);
       const response = await axios.get('https://polycab-backend.vercel.app/data/');
       setFactories(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.error('Error fetching factories:', error);
+    } finally {
       setIsLoading(false);
     }
   };
 
   const handleEdit = (item) => {
     setSelectedItem(item);
-    console.log(item,"QQQQQQQQQQQ")
-    // Populate checkboxes for all factories
     const factoriesMap = {};
     factories.forEach(factory => {
-      factoriesMap[factory.uniqueId] = item.factoryAccess.includes(factory.factoryId);
+      factoriesMap[factory.uniqueId] = item.factoryAccess.includes(factory.uniqueId);
     });
 
     setNewItem({
@@ -66,41 +81,39 @@ const User = () => {
   const handleSave = async () => {
     try {
       setIsLoading(true);
-
-      // Prepare data for API call
+      const updatedFactories = Object.keys(newItem.factories)
+        .filter(factoryId => newItem.factories[factoryId])
+        .map(factoryId => ({ factoryId, accessGrantedByAdmin: true }));
       const data = {
-        name: newItem.name,
+        name: newItem.name, 
         email: newItem.email,
-        factories: Object.keys(newItem.factories).filter(key => newItem.factories[key]),
+        factories: updatedFactories,
       };
-
-      // API call to save data
-      if (selectedItem) {
-        await axios.put(`https://polycab-backend.vercel.app/data/update/${selectedItem.uniqueId}`, data);
-      }
-
-      // Fetch updated items and reset state
-      fetchItems();
+      await axios.put(`http://localhost:4000/user/update-access/${newItem.email}`, data);
+  
       setIsEditPopupOpen(false);
       setSelectedItem(null);
-      setNewItem({
-        name: "",
-        email: "",
+      setNewItem(prevItem => ({
+        ...prevItem,
+        name: '',
+        email: '',
         factories: {},
-      });
+      }));
+      // Refresh items after save
+      fetchItems();
     } catch (error) {
       console.error('Error saving item:', error);
     } finally {
       setIsLoading(false);
     }
   };
-
+  fetchItems();
   const handleCancel = () => {
     setIsEditPopupOpen(false);
     setSelectedItem(null);
     setNewItem({
-      name: "",
-      email: "",
+      name: '',
+      email: '',
       factories: {},
     });
   };
@@ -138,34 +151,33 @@ const User = () => {
           </div>
         )}
       </TableContainer>
-      <Dialog open={isEditPopupOpen || selectedItem !== null} onClose={handleCancel}>
-        <DialogTitle>{selectedItem ? 'Edit Access' : 'Add New User'}</DialogTitle>
+      <Dialog open={isEditPopupOpen} onClose={handleCancel}>
+        <DialogTitle>Edit Access</DialogTitle>
         <DialogContent>
           <FormControl>
-          {factories && factories.map(factory => (
-            <FormControlLabel
-              key={factory.uniqueId}
-              control={
-                <Checkbox
-                  checked={newItem.factories[factory.uniqueId] || false}
-                  onChange={(e) => setNewItem({
-                    ...newItem,
-                    factories: {
-                      ...newItem.factories,
-                      [factory.uniqueId]: e.target.checked
-                    }
-                  })}
-                />
-              }
-              label={factory.name}
-            />
-          ))}
-          
+            {factories && factories.map(factory => (
+              <FormControlLabel
+                key={factory.uniqueId}
+                control={
+                  <Checkbox
+                    checked={newItem.factories[factory.uniqueId] || false}
+                    onChange={(e) => setNewItem({
+                      ...newItem,
+                      factories: {
+                        ...newItem.factories,
+                        [factory.uniqueId]: e.target.checked,
+                      }
+                    })}
+                  />
+                }
+                label={factory.name}
+              />
+            ))}
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button disabled={isLoading} onClick={handleSave} color="primary">
-            {isLoading ? <CircularProgress size={24} /> : 'Save'}
+          <Button onClick={handleSave} color="primary">
+          save
           </Button>
           <Button onClick={handleCancel} color="secondary">
             Cancel
@@ -177,4 +189,5 @@ const User = () => {
 };
 
 export default User;
+
 
