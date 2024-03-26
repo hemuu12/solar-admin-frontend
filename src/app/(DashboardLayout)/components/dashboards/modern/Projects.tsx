@@ -93,33 +93,33 @@ const Projects = ({ isLoading }: ProjectCardProps) => {
   ];
 
   return (
-    <>
-      {
-        isLoading ? (
-          <SkeletonProjectCard />
-        ) : (
-          <DashboardCard>
-            <>
-              <Typography variant="subtitle2" color="textSecondary">
-                Projects
-              </Typography>
-              <Typography variant="h4">78,298</Typography>
-              <Stack direction="row" spacing={1} my={1} alignItems="center">
-                <Avatar sx={{ bgcolor: successlight, width: 24, height: 24 }}>
-                  <IconArrowUpLeft width={18} color="#39B69A" />
-                </Avatar>
-                <Typography variant="subtitle2" fontWeight="600">
-                  +9%
-                </Typography>
-              </Stack>
-              <Box height="80px">
-                <Chart options={optionscolumnchart} series={seriescolumnchart} type="bar" height={80} width={"100%"} />
-              </Box>
-            </>
-          </DashboardCard>
-        )}
-    </>
-
+    // <>
+    //   {
+    //     isLoading ? (
+    //       <SkeletonProjectCard />
+    //     ) : (
+    //       <DashboardCard>
+    //         <>
+    //           <Typography variant="subtitle2" color="textSecondary">
+    //             Projects
+    //           </Typography>
+    //           <Typography variant="h4">78,298</Typography>
+    //           <Stack direction="row" spacing={1} my={1} alignItems="center">
+    //             <Avatar sx={{ bgcolor: successlight, width: 24, height: 24 }}>
+    //               <IconArrowUpLeft width={18} color="#39B69A" />
+    //             </Avatar>
+    //             <Typography variant="subtitle2" fontWeight="600">
+    //               +9%
+    //             </Typography>
+    //           </Stack>
+    //           <Box height="80px">
+    //             <Chart options={optionscolumnchart} series={seriescolumnchart} type="bar" height={80} width={"100%"} />
+    //           </Box>
+    //         </>
+    //       </DashboardCard>
+    //     )}
+    // </>
+    <></>
   );
 };
 

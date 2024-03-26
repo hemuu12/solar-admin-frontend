@@ -95,67 +95,68 @@ const WeeklyStats = ({ isLoading }: WeeklyCardProps) => {
   ];
 
   return (
-    <>
-      {
-        isLoading ? (
-          <SkeletonWeeklyStatsCard />
-        ) : (
-          <DashboardCard title="Weekly Stats" subtitle="Average sales">
-            <>
-              <Stack mt={4}>
-                <Chart
-                  options={optionscolumnchart}
-                  series={seriescolumnchart}
-                  type="area"
-                  height={130}
-                  width={"100%"}
-                />
-              </Stack>
-              <Stack spacing={3} mt={3}>
-                {stats.map((stat, i) => (
-                  <Stack
-                    direction="row"
-                    spacing={2}
-                    justifyContent="space-between"
-                    alignItems="center"
-                    key={i}
-                  >
-                    <Stack direction="row" alignItems="center" spacing={2}>
-                      <Avatar
-                        variant="rounded"
-                        sx={{ bgcolor: stat.lightcolor, color: stat.color, width: 40, height: 40 }}
-                      >
-                        {stat.icon}
-                      </Avatar>
-                      <Box>
-                        <Typography variant="h6" mb="4px">
-                          {stat.title}
-                        </Typography>
-                        <Typography variant="subtitle2" color="textSecondary">
-                          {stat.subtitle}
-                        </Typography>
-                      </Box>
-                    </Stack>
-                    <Avatar
-                      sx={{
-                        bgcolor: stat.lightcolor,
-                        color: stat.color,
-                        width: 42,
-                        height: 24,
-                        borderRadius: '4px',
-                      }}
-                    >
-                      <Typography variant="subtitle2" fontWeight="600">
-                        +{stat.percent}
-                      </Typography>
-                    </Avatar>
-                  </Stack>
-                ))}
-              </Stack>
-            </>
-          </DashboardCard>
-        )}
-    </>
+    // <>
+    //   {
+    //     isLoading ? (
+    //       <SkeletonWeeklyStatsCard />
+    //     ) : (
+    //       <DashboardCard title="Weekly Stats" subtitle="Average sales">
+    //         <>
+    //           <Stack mt={4}>
+    //             <Chart
+    //               options={optionscolumnchart}
+    //               series={seriescolumnchart}
+    //               type="area"
+    //               height={130}
+    //               width={"100%"}
+    //             />
+    //           </Stack>
+    //           <Stack spacing={3} mt={3}>
+    //             {stats.map((stat, i) => (
+    //               <Stack
+    //                 direction="row"
+    //                 spacing={2}
+    //                 justifyContent="space-between"
+    //                 alignItems="center"
+    //                 key={i}
+    //               >
+    //                 <Stack direction="row" alignItems="center" spacing={2}>
+    //                   <Avatar
+    //                     variant="rounded"
+    //                     sx={{ bgcolor: stat.lightcolor, color: stat.color, width: 40, height: 40 }}
+    //                   >
+    //                     {stat.icon}
+    //                   </Avatar>
+    //                   <Box>
+    //                     <Typography variant="h6" mb="4px">
+    //                       {stat.title}
+    //                     </Typography>
+    //                     <Typography variant="subtitle2" color="textSecondary">
+    //                       {stat.subtitle}
+    //                     </Typography>
+    //                   </Box>
+    //                 </Stack>
+    //                 <Avatar
+    //                   sx={{
+    //                     bgcolor: stat.lightcolor,
+    //                     color: stat.color,
+    //                     width: 42,
+    //                     height: 24,
+    //                     borderRadius: '4px',
+    //                   }}
+    //                 >
+    //                   <Typography variant="subtitle2" fontWeight="600">
+    //                     +{stat.percent}
+    //                   </Typography>
+    //                 </Avatar>
+    //               </Stack>
+    //             ))}
+    //           </Stack>
+    //         </>
+    //       </DashboardCard>
+    //     )}
+    // </>
+    <></>
 
   );
 };

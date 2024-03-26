@@ -1,3 +1,5 @@
 {
-  "/(DashboardLayout)/dashboards/user/page": "app/(DashboardLayout)/dashboards/user/page.js"
+  "/(DashboardLayout)/dashboards/factory/page": "app/(DashboardLayout)/dashboards/factory/page.js",
+  "/(DashboardLayout)/dashboards/user/page": "app/(DashboardLayout)/dashboards/user/page.js",
+  "/(DashboardLayout)/page": "app/(DashboardLayout)/page.js"
 }

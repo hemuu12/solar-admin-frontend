@@ -60,44 +60,44 @@ const Customers = ({ isLoading }: CustomersCardProps) => {
   ];
 
   return (
-    <>
-      {
-        isLoading ? (
-          <SkeletonCustomersCard />
-        ) : (
-          <DashboardCard
-            footer={
-              <>
-                <Box height="80px">
-                  <Chart
-                    options={optionscolumnchart}
-                    series={seriescolumnchart}
-                    type="area"
-                    height={80}
-                    width={"100%"}
-                  />
-                </Box>
-              </>
-            }
-          >
-            <>
-              <Typography variant="subtitle2" color="textSecondary">
-                Customers
-              </Typography>
-              <Typography variant="h4">36,358</Typography>
-              <Stack direction="row" spacing={1} mt={1} alignItems="center">
-                <Avatar sx={{ bgcolor: errorlight, width: 24, height: 24 }}>
-                  <IconArrowDownRight width={18} color="#FA896B" />
-                </Avatar>
-                <Typography variant="subtitle2" fontWeight="600">
-                  +9%
-                </Typography>
-              </Stack>
-            </>
-          </DashboardCard>
-        )}
-    </>
-
+    // <>
+    //   {
+    //     isLoading ? (
+    //       <SkeletonCustomersCard />
+    //     ) : (
+    //       <DashboardCard
+    //         footer={
+    //           <>
+    //             <Box height="80px">
+    //               <Chart
+    //                 options={optionscolumnchart}
+    //                 series={seriescolumnchart}
+    //                 type="area"
+    //                 height={80}
+    //                 width={"100%"}
+    //               />
+    //             </Box>
+    //           </>
+    //         }
+    //       >
+    //         <>
+    //           <Typography variant="subtitle2" color="textSecondary">
+    //             Customers
+    //           </Typography>
+    //           <Typography variant="h4">36,358</Typography>
+    //           <Stack direction="row" spacing={1} mt={1} alignItems="center">
+    //             <Avatar sx={{ bgcolor: errorlight, width: 24, height: 24 }}>
+    //               <IconArrowDownRight width={18} color="#FA896B" />
+    //             </Avatar>
+    //             <Typography variant="subtitle2" fontWeight="600">
+    //               +9%
+    //             </Typography>
+    //           </Stack>
+    //         </>
+    //       </DashboardCard>
+    //     )}
+    // </>
+    <></>
   );
 };
 

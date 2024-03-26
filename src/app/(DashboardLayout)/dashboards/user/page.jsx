@@ -1,5 +1,4 @@
 "use client"
-
 import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import axios from 'axios';
@@ -89,7 +88,7 @@ const User = () => {
         email: newItem.email,
         factories: updatedFactories,
       };
-      await axios.put(`http://localhost:4000/user/update-access/${newItem.email}`, data);
+      await axios.put(`https://polycab-backend.vercel.app/user/update-access/${newItem.email}`, data);
   
       setIsEditPopupOpen(false);
       setSelectedItem(null);
@@ -107,7 +106,7 @@ const User = () => {
       setIsLoading(false);
     }
   };
-  fetchItems();
+
   const handleCancel = () => {
     setIsEditPopupOpen(false);
     setSelectedItem(null);
@@ -177,7 +176,7 @@ const User = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleSave} color="primary">
-          save
+            Save
           </Button>
           <Button onClick={handleCancel} color="secondary">
             Cancel
@@ -189,5 +188,3 @@ const User = () => {
 };
 
 export default User;
-
-
