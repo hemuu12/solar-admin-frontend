@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import axios from 'axios';
@@ -20,6 +21,8 @@ import {
   FormControlLabel,
   FormControl,
 } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const User = () => {
   const [items, setItems] = useState([]);
@@ -84,12 +87,11 @@ const User = () => {
         .filter(factoryId => newItem.factories[factoryId])
         .map(factoryId => ({ factoryId, accessGrantedByAdmin: true }));
       const data = {
-        name: newItem.name, 
+        name: newItem.name,
         email: newItem.email,
         factories: updatedFactories,
       };
-      await axios.put(`https://polycab-backend.vercel.app/user/update-access/${newItem.email}`, data);
-  
+      let response=await axios.put(`https://polycab-backend.vercel.app/user/update-access/${newItem.email}`, data);
       setIsEditPopupOpen(false);
       setSelectedItem(null);
       setNewItem(prevItem => ({
@@ -100,8 +102,13 @@ const User = () => {
       }));
       // Refresh items after save
       fetchItems();
+      // Show success toast
     } catch (error) {
-      console.error('Error saving item:', error);
+      setIsEditPopupOpen(false);
+      if (error.response) {
+      toast.error(error.response.data);
+      // Show error toast
+      }
     } finally {
       setIsLoading(false);
     }
@@ -119,6 +126,7 @@ const User = () => {
 
   return (
     <div className="container mx-auto p-4">
+    <ToastContainer />
       <TableContainer>
         <Table>
           <TableHead>

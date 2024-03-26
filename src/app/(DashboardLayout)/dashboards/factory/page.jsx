@@ -213,11 +213,11 @@ const FactoryTable = () => {
           setIsEditPopupOpen(true);
         }}
       >
-        Add New Item
+        Add New Factories
       </Button>
 
       <Dialog open={isEditPopupOpen || selectedItem !== null} onClose={handleCancel}>
-        <DialogTitle>{selectedItem ? 'Edit Item' : 'Add New Item'}</DialogTitle>
+        <DialogTitle>{selectedItem ? 'Edit Item' : 'Add New Factory'}</DialogTitle>
         <DialogContent>
           <TextField
             label="Unique Id"

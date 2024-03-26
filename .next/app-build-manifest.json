@@ -30,6 +30,7 @@
     "/(DashboardLayout)/dashboards/user/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/(DashboardLayout)/dashboards/user/page.css",
       "static/chunks/app/(DashboardLayout)/dashboards/user/page.js"
     ],
     "/(DashboardLayout)/page": [
