@@ -27,7 +27,7 @@ const TopCards = () => {
   return (
     <Grid container spacing={3} mt={1}>
       {topcards.map((topcard, i) => (
-        <Grid item xs={12} sm={4} lg={2} key={i}>
+        <Grid item xs={12} sm={4} lg={3} key={i}>
           <Box bgcolor={topcard.bgcolor + ".light"} textAlign="center">
             <CardContent>
               <Image src={topcard.icon} alt={"topcard.icon"} width="50" height="50" />

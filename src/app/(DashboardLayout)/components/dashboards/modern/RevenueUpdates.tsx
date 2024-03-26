@@ -95,102 +95,103 @@ const RevenueUpdates = ({ isLoading }: RevenueupdatestwoCardProps) => {
   ];
 
   return (
-    <>
-      {
-        isLoading ? (
-          <SkeletonRevenueUpdatesTwoCard />
-        ) : (
-          <DashboardCard
-            title="Factories"
-            subtitle="Overview of Factories"
-            action={
-              <CustomSelect
-                labelId="month-dd"
-                id="month-dd"
-                size="small"
-                value={month}
-                onChange={handleChange}
-              >
-                <MenuItem value={1}>March 2023</MenuItem>
-                <MenuItem value={2}>April 2023</MenuItem>
-                <MenuItem value={3}>May 2023</MenuItem>
-              </CustomSelect>
-            }
-          >
-            <Grid container spacing={3}>
-              {/* column */}
-              <Grid item xs={12} sm={8}>
-                <Box className="rounded-bars">
-                  <Chart
-                    options={optionscolumnchart}
-                    series={seriescolumnchart}
-                    type="bar"
-                    height={360}
-                    width={"100%"}
-                  />
-                </Box>
-              </Grid>
-              {/* column */}
-              <Grid item xs={12} sm={4}>
-                <Stack spacing={3} mt={3}>
-                  <Stack direction="row" spacing={2} alignItems="center">
-                    <Box
-                      width={40}
-                      height={40}
-                      bgcolor="primary.light"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <Typography color="primary" variant="h6" display="flex">
-                        <IconGridDots size={24} />
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography variant="h3" fontWeight="700">
-                        7
-                      </Typography>
-                      <Typography variant="subtitle2" color="textSecondary">
-                        Factories
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </Stack>
-                {/* <Stack spacing={3} my={5}>
-                  <Stack direction="row" spacing={2}>
-                    <Avatar
-                      sx={{ width: 9, mt: 1, height: 9, bgcolor: primary, svg: { display: 'none' } }}
-                    ></Avatar>
-                    {/* <Box>
-                      <Typography variant="subtitle1" color="textSecondary">
-                        Earnings this month
-                      </Typography>
-                      <Typography variant="h5">$48,820</Typography>
-                    </Box> */}
-                  {/* </Stack> */}
-                  {/* <Stack direction="row" spacing={2}> */}
-                    {/* <Avatar
-                      sx={{ width: 9, mt: 1, height: 9, bgcolor: secondary, svg: { display: 'none' } }}
-                    ></Avatar>
-                    <Box>
-                      <Typography variant="subtitle1" color="textSecondary">
-                        Expense this month
-                      </Typography>
-                      <Typography variant="h5">$26,498</Typography>
-                    </Box> */}
-                  {/* </Stack> */}
-                {/* </Stack> */}
-                <Button style={{marginTop:"10px"}}
-                color="primary" variant="contained" fullWidth>
-                  View Full Details
-                </Button>
-              </Grid>
-            </Grid>
-          </DashboardCard>
-        )}
+    // <>
+    //   {
+    //     isLoading ? (
+    //       <SkeletonRevenueUpdatesTwoCard />
+    //     ) : (
+    //       <DashboardCard
+    //         title="Factories"
+    //         subtitle="Overview of Factories"
+    //         action={
+    //           <CustomSelect
+    //             labelId="month-dd"
+    //             id="month-dd"
+    //             size="small"
+    //             value={month}
+    //             onChange={handleChange}
+    //           >
+    //             <MenuItem value={1}>March 2023</MenuItem>
+    //             <MenuItem value={2}>April 2023</MenuItem>
+    //             <MenuItem value={3}>May 2023</MenuItem>
+    //           </CustomSelect>
+    //         }
+    //       >
+    //         <Grid container spacing={3}>
+    //           {/* column */}
+    //           <Grid item xs={12} sm={8}>
+    //             <Box className="rounded-bars">
+    //               <Chart
+    //                 options={optionscolumnchart}
+    //                 series={seriescolumnchart}
+    //                 type="bar"
+    //                 height={360}
+    //                 width={"100%"}
+    //               />
+    //             </Box>
+    //           </Grid>
+    //           {/* column */}
+    //           <Grid item xs={12} sm={4}>
+    //             <Stack spacing={3} mt={3}>
+    //               <Stack direction="row" spacing={2} alignItems="center">
+    //                 <Box
+    //                   width={40}
+    //                   height={40}
+    //                   bgcolor="primary.light"
+    //                   display="flex"
+    //                   alignItems="center"
+    //                   justifyContent="center"
+    //                 >
+    //                   <Typography color="primary" variant="h6" display="flex">
+    //                     <IconGridDots size={24} />
+    //                   </Typography>
+    //                 </Box>
+    //                 <Box>
+    //                   <Typography variant="h3" fontWeight="700">
+    //                     7
+    //                   </Typography>
+    //                   <Typography variant="subtitle2" color="textSecondary">
+    //                     Factories
+    //                   </Typography>
+    //                 </Box>
+    //               </Stack>
+    //             </Stack>
+    //             {/* <Stack spacing={3} my={5}>
+    //               <Stack direction="row" spacing={2}>
+    //                 <Avatar
+    //                   sx={{ width: 9, mt: 1, height: 9, bgcolor: primary, svg: { display: 'none' } }}
+    //                 ></Avatar>
+    //                 {/* <Box>
+    //                   <Typography variant="subtitle1" color="textSecondary">
+    //                     Earnings this month
+    //                   </Typography>
+    //                   <Typography variant="h5">$48,820</Typography>
+    //                 </Box> */}
+    //               {/* </Stack> */}
+    //               {/* <Stack direction="row" spacing={2}> */}
+    //                 {/* <Avatar
+    //                   sx={{ width: 9, mt: 1, height: 9, bgcolor: secondary, svg: { display: 'none' } }}
+    //                 ></Avatar>
+    //                 <Box>
+    //                   <Typography variant="subtitle1" color="textSecondary">
+    //                     Expense this month
+    //                   </Typography>
+    //                   <Typography variant="h5">$26,498</Typography>
+    //                 </Box> */}
+    //               {/* </Stack> */}
+    //             {/* </Stack> */}
+    //             <Button style={{marginTop:"10px"}}
+    //             color="primary" variant="contained" fullWidth>
+    //               View Full Details
+    //             </Button>
+    //           </Grid>
+    //         </Grid>
+    //       </DashboardCard>
+    //     )}
 
 
-    </>
+    // </>
+    <></>
   );
 };
 
