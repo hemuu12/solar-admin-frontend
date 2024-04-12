@@ -39,10 +39,10 @@
       "static/css/app/(DashboardLayout)/dashboards/user/page.css",
       "static/chunks/app/(DashboardLayout)/dashboards/user/page.js"
     ],
-    "/(DashboardLayout)/dashboards/factory/page": [
+    "/not-found": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(DashboardLayout)/dashboards/factory/page.js"
+      "static/chunks/app/not-found.js"
     ]
   }
 }

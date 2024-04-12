@@ -1,7 +1,5 @@
 "use client"
-
 import React, { useState, useEffect } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
 import axios from 'axios';
 import {
   Button,
@@ -19,6 +17,9 @@ import 'react-toastify/dist/ReactToastify.css';
 const UserApproveAccess = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingIds, setLoadingIds] = useState([]);
+  const [isLoadingApprove, setIsLoadingApprove] = useState(false);
+  const [isLoadingReject, setIsLoadingReject] = useState(false);
 
   useEffect(() => {
     fetchUsers();
@@ -35,26 +36,46 @@ const UserApproveAccess = () => {
       setIsLoading(false);
     }
   };
-  const handleClick=async(status,id)=>{
-    let data={
-    "status": status
+
+  const handleApproveClick = async (id) => {
+    setIsLoadingApprove(true);
+    setLoadingIds([...loadingIds, id]);
+    try {
+      let response = await axios.put(`https://polycab-backend.vercel.app/user/approve-access/${id}`, { status: "Approved" });
+      fetchUsers();
+      console.log(response);
+    } catch (error) {
+      console.log(error, "error");
+      if (error.response) {
+        toast.error(error.response.data);
+      }
+    } finally {
+      setLoadingIds(loadingIds.filter(itemId => itemId !== id));
+      setIsLoadingApprove(false);
     }
-    try{
-    let response=await axios.put(`https://polycab-backend.vercel.app/user/approve-access/${id}`, data);
-    console.log(response)
+  };
+
+  const handleRejectClick = async (id) => {
+    setIsLoadingReject(true);
+    setLoadingIds([...loadingIds, id]);
+    try {
+      let response = await axios.put(`https://polycab-backend.vercel.app/user/approve-access/${id}`, { status: "Rejected" });
+      fetchUsers();
+      console.log(response);
+    } catch (error) {
+      console.log(error, "error");
+      if (error.response) {
+        toast.error(error.response.data);
+      }
+    } finally {
+      setLoadingIds(loadingIds.filter(itemId => itemId !== id));
+      setIsLoadingReject(false);
     }
-    catch(error){
-        console.log(error, "error")
-        if (error.response) {
-          toast.error(error.response.data);
-          // Show error toast
-    }
-  }
-  }
+  };
 
   return (
     <div className="container mx-auto p-4">
-    <ToastContainer />
+      <ToastContainer />
       <TableContainer>
         <Table>
           <TableHead>
@@ -71,22 +92,24 @@ const UserApproveAccess = () => {
                 <TableCell>{item.firstName}</TableCell>
                 <TableCell>{item.lastName}</TableCell>
                 <TableCell>{item.email}</TableCell>
-                <TableCell style={{display:"flex" , gap:"10px"}} >
-                <Button
-                  variant='contained'
-                  style={{ backgroundColor: 'green', color: 'white' }}
-                  onClick={() => handleClick("Approved", item._id)}
-                >
-                   {isLoading ? <CircularProgress size={24} /> : 'Approve'}
-                </Button>
-                <Button
-                  variant='contained'
-                  style={{ backgroundColor: 'red', color: 'white' }}
-                  onClick={() => handleClick("Rejected", item._id)}
-                >
-                {isLoading ? <CircularProgress size={24} /> : 'Reject'}
-                </Button>
-              </TableCell>
+                <TableCell style={{ display: "flex", gap: "10px" }} >
+                  <Button
+                    variant='contained'
+                    style={{ backgroundColor: 'green', color: 'white' }}
+                    onClick={() => handleApproveClick(item._id)}
+                    disabled={isLoadingApprove || loadingIds.includes(item._id)}
+                  >
+                    {isLoadingApprove && loadingIds.includes(item._id) ? <CircularProgress size={24} /> : 'Approve'}
+                  </Button>
+                  <Button
+                    variant='contained'
+                    style={{ backgroundColor: 'red', color: 'white' }}
+                    onClick={() => handleRejectClick(item._id)}
+                    disabled={isLoadingReject || loadingIds.includes(item._id)}
+                  >
+                    {isLoadingReject && loadingIds.includes(item._id) ? <CircularProgress size={24} /> : 'Reject'}
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -96,5 +119,4 @@ const UserApproveAccess = () => {
   );
 };
 
-
-export default UserApproveAccess
+export default UserApproveAccess;
