@@ -98,12 +98,12 @@ const Menuitems: MenuitemsType[] = [
     icon: IconUserPlus,
     href: "/dashboards/user",
   },
-  {
-    id: uniqueId(),
-    title: "User Access Request",
-    icon: IconUserPlus,
-    href: "/dashboards/user-access-approve",
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: "User Access Request",
+  //   icon: IconUserPlus,
+  //   href: "/dashboards/user-access-approve",
+  // },
  
 ];
 

@@ -40,10 +40,11 @@ const FactoryTable = () => {
   const fetchItems = async () => {
     try {
       setIsLoading(true)
-      const response = await axios.get('https://polycab-backend.vercel.app/data/');
+      const response = await axios.get('http://localhost:4000/data/');
       setItems(response.data);
       setIsLoading(false)
     } catch (error) {
+      setIsLoading(false)
       console.error('Error fetching items:', error);
     }
   };
@@ -68,7 +69,7 @@ const FactoryTable = () => {
 
   const handleDelete = async (uniqueId) => {
     try {
-      await axios.delete(`https://polycab-backend.vercel.app/data/delete/${uniqueId}`);
+      await axios.delete(`http://localhost:4000/data/delete/${uniqueId}`);
       setItems(items.filter((item) => item.uniqueId !== uniqueId));
     } catch (error) {
       console.error('Error deleting item:', error);
@@ -92,13 +93,13 @@ const FactoryTable = () => {
       });
   
       if (selectedItem) {
-        await axios.put(`https://polycab-backend.vercel.app/data/update/${item.uniqueId}`, formData, {
+        await axios.put(`http://localhost:4000/data/update/${item.uniqueId}`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
       } else {
-        await axios.post('https://polycab-backend.vercel.app/data/add', formData, {
+        await axios.post('http://localhost:4000/data/add', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -171,9 +172,9 @@ const FactoryTable = () => {
                 <TableCell>
                 {item.featuredImage ? (
                   <img src={convertBufferToImage(item.featuredImage)} alt="Featured Image" width={50} height={50}/>
-                ) : (
+                ) : ( 
                   'N/A'
-                )}  
+                )}
                 </TableCell>
                 <TableCell>{item.uniqueId}</TableCell>
                 <TableCell>{item.name}</TableCell>
@@ -262,7 +263,7 @@ const FactoryTable = () => {
           <TextField
             label="Tour Link"
             value={newItem.tourLink}
-            onChange={(e) => setNewItem({ ...newItem, tourLink: e.target.value })}
+            onChange={  (e) => setNewItem({ ...newItem, tourLink: e.target.value })}
             fullWidth
             margin="normal"
           />

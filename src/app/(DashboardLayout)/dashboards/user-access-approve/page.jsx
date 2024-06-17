@@ -28,7 +28,7 @@ const UserApproveAccess = () => {
   const fetchUsers = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get('https://polycab-backend.vercel.app/user/all-request');
+      const response = await axios.get('http://localhost:4000/user/all-request');
       setItems(response.data);
     } catch (error) {
       console.error('Error fetching items:', error);
@@ -41,7 +41,7 @@ const UserApproveAccess = () => {
     setIsLoadingApprove(true);
     setLoadingIds([...loadingIds, id]);
     try {
-      let response = await axios.put(`https://polycab-backend.vercel.app/user/approve-access/${id}`, { status: "Approved" });
+      let response = await axios.put(`http://localhost:4000/user/approve-access/${id}`, { status: "Approved" });
       fetchUsers();
       console.log(response);
     } catch (error) {
@@ -58,6 +58,7 @@ const UserApproveAccess = () => {
   const handleRejectClick = async (id) => {
     setIsLoadingReject(true);
     setLoadingIds([...loadingIds, id]);
+    
     try {
       let response = await axios.put(`https://polycab-backend.vercel.app/user/approve-access/${id}`, { status: "Rejected" });
       fetchUsers();
