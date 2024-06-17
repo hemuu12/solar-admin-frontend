@@ -8,7 +8,13 @@ import Image from 'next/image';
 import { IconButton , Tooltip } from '@mui/material';
 import { InfoOutlined } from '@mui/icons-material';
 
-
+function trimStr(str, length) {
+  if (!str || str.length <= length) {
+      return str;
+  } else {
+      return str.slice(0, length);
+  }
+}
 const User = () => {
   const [items, setItems] = useState([]);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
@@ -83,7 +89,7 @@ const User = () => {
               <TableRow key={item.uniqueId}>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.email}</TableCell>
-                <TableCell>{item.password}</TableCell>
+                <TableCell title={item.password}>{trimStr(item?.password, 25)}</TableCell>
               </TableRow>
             ))}
           </TableBody>
