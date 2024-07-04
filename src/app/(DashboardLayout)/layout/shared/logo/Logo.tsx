@@ -19,7 +19,7 @@ const Logo = () => {
       <LinkStyled href="/">
         {customizer.activeMode === "dark" ? (
           <Image
-            src="/images/logos/dark-logo.jpg"
+            src="/images/logos/dark-rtl-logo.svg"
             alt="logo"
             height={customizer.TopbarHeight}
             width={174}
@@ -27,7 +27,7 @@ const Logo = () => {
           />
         ) : (
           <Image
-            src={"/images/logos/dark-logo.jpg"}
+            src={"/images/logos/dark-rtl-logo.svg"}
             alt="logo"
             height={customizer.TopbarHeight}
             width={174}

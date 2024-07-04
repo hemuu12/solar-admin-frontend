@@ -1,9 +1,15 @@
 {
   "pages": {
-    "/(DashboardLayout)/page": [
+    "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(DashboardLayout)/page.js"
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/loading.js"
     ],
     "/(DashboardLayout)/layout": [
       "static/chunks/webpack.js",
@@ -16,26 +22,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(DashboardLayout)/loading.js"
     ],
-    "/layout": [
+    "/(DashboardLayout)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
+      "static/chunks/app/(DashboardLayout)/page.js"
     ],
-    "/loading": [
+    "/(DashboardLayout)/dashboards/energy-retailer/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/loading.js"
-    ],
-    "/(DashboardLayout)/dashboards/factory/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(DashboardLayout)/dashboards/factory/page.js"
-    ],
-    "/(DashboardLayout)/dashboards/user/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(DashboardLayout)/dashboards/user/page.js"
+      "static/chunks/app/(DashboardLayout)/dashboards/energy-retailer/page.js"
     ]
   }
 }

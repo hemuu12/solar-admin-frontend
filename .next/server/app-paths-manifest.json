@@ -1,4 +1,4 @@
 {
   "/(DashboardLayout)/page": "app/(DashboardLayout)/page.js",
-  "/(DashboardLayout)/dashboards/user/page": "app/(DashboardLayout)/dashboards/user/page.js"
+  "/(DashboardLayout)/dashboards/energy-retailer/page": "app/(DashboardLayout)/dashboards/energy-retailer/page.js"
 }

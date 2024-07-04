@@ -72,31 +72,31 @@ const Menuitems: MenuitemsType[] = [
     subheader: "Home",
   },
 
-  {
-    id: uniqueId(),
-    title: "Modern",
-    icon: IconAperture,
-    href: "/",
-    chip: "",
-    chipColor: "secondary",
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: "Modern",
+  //   icon: IconAperture,
+  //   href: "/",
+  //   chip: "",
+  //   chipColor: "secondary",
+  // },
   // {
   //   id: uniqueId(),
   //   title: "eCommerce",
   //   icon: IconShoppingCart,
   //   href: "/dashboards/ecommerce",
   // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Factory",
+  //   icon: IconShoppingCart,
+  //   href: "/dashboards/factory",
+  // },
   {
     id: uniqueId(),
-    title: "Factory",
-    icon: IconShoppingCart,
-    href: "/dashboards/factory",
-  },
-  {
-    id: uniqueId(),
-    title: "User",
-    icon: IconUserPlus,
-    href: "/dashboards/user",
+    title: "Energy Retailer",
+    icon: IconStar,
+    href: "/dashboards/energy-retailer",
   },
   // {
   //   id: uniqueId(),
