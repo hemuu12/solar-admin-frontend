@@ -13,11 +13,12 @@ import Footer from '@/app/(DashboardLayout)/components/landingpage/footer/Footer
 import Frameworks from '@/app/(DashboardLayout)/components/landingpage/frameworks/Frameworks';
 import LpHeader from '@/app/(DashboardLayout)/components/landingpage/header/Header';
 import Testimonial from '@/app/(DashboardLayout)/components/landingpage/testimonial/Testimonial';
+import EnergyRetailer from '../(DashboardLayout)/dashboards/energy-retailer/page';
 
 export default function Landingpage () {
   return (
     <PageContainer title="Landingpage" description="this is Landingpage">
-      <LpHeader />
+      {/* <LpHeader />
       <Banner />
       <DemoSlider />
       <Frameworks />
@@ -25,7 +26,8 @@ export default function Landingpage () {
       <Features />
       <C2a />
       <C2a2 />
-      <Footer />
+      <Footer /> */}
+      <EnergyRetailer/>
     </PageContainer>
   );
 };
