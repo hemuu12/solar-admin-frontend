@@ -98,13 +98,36 @@ const Menuitems: MenuitemsType[] = [
     icon: IconStar,
     href: "/dashboards/energy-retailer",
   },
-  // {
-  //   id: uniqueId(),
-  //   title: "User Access Request",
-  //   icon: IconUserPlus,
-  //   href: "/dashboards/user-access-approve",
-  // },
- 
+  {
+    navlabel: true,
+    subheader: "Apps",
+  },
+  {
+    id: uniqueId(),
+    title: "Brands",
+    icon: IconChartDonut3,
+    href: "/dashboards/brands/",
+    children: [
+      {
+        id: uniqueId(),
+        title: "Compare Your Bill",
+        icon: IconPoint,
+        href: "/dashboards/compare-your-bill",
+      },
+      {
+        id: uniqueId(),
+        title: "Deal Expert",
+        icon: IconPoint,
+        href: "/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow",
+      },
+      {
+        id: uniqueId(),
+        title: "Check Your Bills",
+        icon: IconPoint,
+        href: "/apps/blog/detail/streaming-video-way-before-it-was-cool-go-dark-tomorrow",
+      },
+    ],
+  },
 ];
 
 export default Menuitems;
