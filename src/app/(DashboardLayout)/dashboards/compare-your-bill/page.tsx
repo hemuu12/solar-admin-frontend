@@ -150,18 +150,25 @@ const rows = [
 const CompareYourBills = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [template, setTemplate] = useState('Hi, [first_name],\n[agent_first_name] from [brand] has sent you a Quote for your [suburb] address.\nClick here to Review and signup the [URL]')
+  const [template, setTemplate] = useState('Hi, [first_name],\n[agent_first_name] from [brand] has sent you a Quote for your [suburb] address.\nClick here to Review and signup the [URL]');
   const [originalFormat, setOriginalFormat] = useState('');
-  const placeholders = ['First Name', 'Suburb', 'URL']
+  const placeholders = ['First Name', 'Suburb', 'URL'];
 
-  const handleTemplateChange = (e:any) => {
+  const placeholderValues:any = {
+    'First Name': '{first_name}',
+    'Suburb': '{suburb}',
+    'URL': '{URL}'
+  };
+
+  const handleTemplateChange = (e: any) => {
     setTemplate(e.target.value);
     setOriginalFormat(e.target.value); // Adjust logic for original format as needed
   };
 
-  const handlePlaceholderClick = (placeholder:any) => {
+  const handlePlaceholderClick = (placeholder: any) => {
+    const value = placeholderValues[placeholder];
     setTemplate((prev) => `${prev} ${placeholder}`);
-    setOriginalFormat((prev) => `${prev} ${placeholder}`); // Adjust logic for original format as needed
+    setOriginalFormat((prev) => `${prev} ${value}`);
   };
 
   const handleSave = () => {
@@ -215,75 +222,73 @@ const CompareYourBills = () => {
         </Grid>
 
         <Grid container spacing={3} mt={2}>
-          <Grid item xs={12}>
-            <ParentCard title="SMS Settings">
-              <div>
-                <Grid container spacing={3}>
-                  {/* SMS Originator */}
-                  <Grid item xs={12} sm={3} display="flex" alignItems="center">
-                    <CustomFormLabel htmlFor="bl-name" sx={{ mt: 0, mb: { xs: '-10px', sm: 0 } }}>
-                      SMS Originator
-                    </CustomFormLabel>
-                  </Grid>
-                  <Grid item xs={12} sm={9}>
-                    <CustomTextField placeholder="CompareYour" fullWidth />
-                  </Grid>
+      <Grid item xs={12}>
+        <ParentCard title="SMS Settings">
+          <div>
+            <Grid container spacing={3}>
+              {/* SMS Originator */}
+              <Grid item xs={12} sm={3} display="flex" alignItems="center">
+                <CustomFormLabel htmlFor="bl-name" sx={{ mt: 0, mb: { xs: '-10px', sm: 0 } }}>
+                  SMS Originator
+                </CustomFormLabel>
+              </Grid>
+              <Grid item xs={12} sm={9}>
+                <CustomTextField placeholder="CompareYour" fullWidth />
+              </Grid>
 
-                  {/* SMS Template and Original Format */}
-                  <Grid item xs={12} sm={3} display="flex" alignItems="center">
-                    <CustomFormLabel htmlFor="bl-message" sx={{ mt: 0, mb: { xs: '-10px', sm: 0 } }}>
-                      SMS Template
-                    </CustomFormLabel>
+              {/* SMS Template and Original Format */}
+              <Grid item xs={12} sm={3} display="flex" alignItems="center">
+                <CustomFormLabel htmlFor="bl-message" sx={{ mt: 0, mb: { xs: '-10px', sm: 0 } }}>
+                  SMS Template
+                </CustomFormLabel>
+              </Grid>
+              <Grid item xs={12} sm={9}>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="bl-message"
+                      value={template}
+                      onChange={handleTemplateChange}
+                      multiline
+                      fullWidth
+                      rows={6}
+                      variant="outlined"
+                    />
                   </Grid>
-                  <Grid item xs={12} sm={9}>
-                    <Grid container spacing={2}>
-                      <Grid item xs={6}>
-                        <TextField
-                          id="bl-message"
-                          value={template}
-                          onChange={handleTemplateChange}
-                          multiline
-                          fullWidth
-                          rows={6}
-                          variant="outlined"
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <TextField
-                          id="original-format"
-                          value={originalFormat}
-                          onChange={handleTemplateChange}
-                          multiline
-                          fullWidth
-                          rows={6}
-                          variant="outlined"
-                        />
-                        <Typography variant="caption" display="block" gutterBottom>
-                          {originalFormat.length} Chars
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                    {/* Placeholder Buttons */}
-                    <Grid item xs={24} display="flex" alignItems="center" gap={2}>
-                      <Typography>Placeholders</Typography>
-                      <Box>
-                        {placeholders.map((placeholder) => (
-                          <Button
-                            key={placeholder}
-                            variant="outlined"
-                            size="small"
-                            onClick={() => handlePlaceholderClick(placeholder)}
-                          >
-                            {placeholder}
-                          </Button>
-                        ))}
-                      </Box>
-                    </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="original-format"
+                      value={originalFormat}
+                      onChange={handleTemplateChange}
+                      multiline
+                      fullWidth
+                      rows={6}
+                      variant="outlined"
+                    />
+                    <Typography variant="caption" display="block" gutterBottom>
+                      {originalFormat.length} Chars
+                    </Typography>
                   </Grid>
+                </Grid>
+                {/* Placeholder Buttons */}
+                <Grid item xs={24} display="flex" alignItems="center" gap={2}>
+                  <Typography>Placeholders</Typography>
+                  <Box>
+                    {placeholders.map((placeholder) => (
+                      <Button
+                        key={placeholder}
+                        variant="outlined"
+                        size="small"
+                        onClick={() => handlePlaceholderClick(placeholder)}
+                      >
+                        {placeholder}
+                      </Button>
+                    ))}
+                  </Box>
+                </Grid>
+              </Grid>
 
-
-
-                              {/* Cancel and Save Buttons */}
+              {/* Cancel and Save Buttons */}
               <Grid item xs={12} mt={5}>
                 <Box display="flex" gap={3} justifyContent="flex-end">
                   <Button variant="outlined" color="secondary" onClick={handleCancel} style={{ marginRight: '10px' }}>
@@ -294,13 +299,11 @@ const CompareYourBills = () => {
                   </Button>
                 </Box>
               </Grid>
-
-                </Grid>
-              </div>
-            </ParentCard>
-          </Grid>
-        </Grid>
-
+            </Grid>
+          </div>
+        </ParentCard>
+      </Grid>
+    </Grid>
 
       </Box >
 

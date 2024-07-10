@@ -106,7 +106,7 @@ const Menuitems: MenuitemsType[] = [
     id: uniqueId(),
     title: "Brands",
     icon: IconChartDonut3,
-    href: "/dashboards/brands/",
+    href: "/dashboards/compare-your-bill",
     children: [
       {
         id: uniqueId(),
