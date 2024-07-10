@@ -53,24 +53,24 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
         disabled={page === 0}
         aria-label="first page"
       >
-        {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+        <LastPageIcon />
       </IconButton>
       <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
-        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+       <KeyboardArrowLeft />
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="next page"
       >
-        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+         <KeyboardArrowRight />
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
       >
-        {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+        <FirstPageIcon />
       </IconButton>
     </Box>
   );
@@ -82,7 +82,7 @@ const rows = [
     Sales: '5',
     imgsrc: "/images/profile/user-1.jpg",
     customer: 'Sunil Joshi',
-    "Month on Month": '+9',
+    month_on_month: +9,
     date: '10 Jun, 2021',
   },
   {
@@ -90,7 +90,7 @@ const rows = [
     Sales: '1',
     imgsrc: "/images/profile/user-2.jpg",
     customer: 'John Deo',
-    "Month on Month": '-9',
+    month_on_month: -9,
     date: '10 Jun, 2021',
   },
   {
@@ -98,35 +98,35 @@ const rows = [
     Sales: '3',
     imgsrc: "/images/profile/user-3.jpg",
     customer: 'Mily Peter',
-    "Month on Month": '+9',
+    month_on_month: +9,
     date: '10 Jun, 2021',
   },
   {
     Sales: '11',
     imgsrc: "/images/profile/user-4.jpg",
     customer: 'Andrew McDownland',
-    "Month on Month": '-9',
+    month_on_month: -9,
     date: '10 Jun, 2021',
   },
   {
     Sales: '4',
     imgsrc: "/images/profile/user-5.jpg",
     customer: 'Christopher Jamil',
-    "Month on Month": '+9',
+    month_on_month: +9,
     date: '15 Apr, 2021',
   },
   {
     Sales: '1',
     imgsrc: "/images/profile/user-2.jpg",
     customer: 'John Deo',
-    "Month on Month": '+9',
+    month_on_month: +9,
     date: '10 Jun, 2021',
   },
   {
     Sales: '3',
     imgsrc: "/images/profile/user-3.jpg",
     customer: 'Mily Peter',
-    "Month on Month": '-9',
+    month_on_month: -9,
     status: 'Cancel',
     date: '10 Jun, 2021',
   },
@@ -134,14 +134,14 @@ const rows = [
     Sales: '11',
     imgsrc: "/images/profile/user-4.jpg",
     customer: 'Andrew McDownland',
-    "Month on Month": '+9',
+    month_on_month: +9,
     date: '10 Jun, 2021',
   },
   {
     Sales: '4',
     imgsrc: "/images/profile/user-5.jpg",
     customer: 'Christopher Jamil',
-    "Month on Month": '-9',
+    month_on_month: -9,
     date: '15 Apr, 2021',
   },
 ].sort((a, b) => (a.customer < b.customer ? -1 : 1));
@@ -154,12 +154,12 @@ const CompareYourBills = () => {
   const [originalFormat, setOriginalFormat] = useState('');
   const placeholders = ['First Name', 'Suburb', 'URL']
 
-  const handleTemplateChange = (e) => {
+  const handleTemplateChange = (e:any) => {
     setTemplate(e.target.value);
     setOriginalFormat(e.target.value); // Adjust logic for original format as needed
   };
 
-  const handlePlaceholderClick = (placeholder) => {
+  const handlePlaceholderClick = (placeholder:any) => {
     setTemplate((prev) => `${prev} ${placeholder}`);
     setOriginalFormat((prev) => `${prev} ${placeholder}`); // Adjust logic for original format as needed
   };
@@ -191,7 +191,7 @@ const CompareYourBills = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
 
-  const handlePopoverOpen = (event) => {
+  const handlePopoverOpen = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -356,15 +356,15 @@ const CompareYourBills = () => {
 
                     <TableCell>
                       <Typography color="textSecondary" variant="h6" fontWeight="400">
-                        {row['Month on Month'] > 0 ? (
+                        {row.month_on_month > 0 ? (
                           <div style={{ display: 'flex', alignItems: 'center', gap: "10px" }}>
                             <IconArrowUpRight width={18} color="#39B69A" />
-                            <span>{row['Month on Month']}%</span>
+                            <span>{row.month_on_month}%</span>
                           </div>
                         ) : (
                           <div style={{ display: 'flex', alignItems: 'center', gap: "10px" }}>
                             <IconArrowDownRight width={18} color="#FF0000" />
-                            <span>{row['Month on Month']}%</span>
+                            <span>{row.month_on_month}%</span>
                           </div>
                         )}
 
